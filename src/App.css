@@ -46,7 +46,7 @@ main {
 body::-webkit-scrollbar {
   display: none;
 }
-`
+
 main::-webkit-scrollbar-track {
   background: #1e1e24;
 }
@@ -155,7 +155,7 @@ p {
 .chat-room {
   display: flex;
   flex-direction: column;
-  margin-bottom: 5%;
+  margin-bottom: 65px;
 }
 
 .sent {

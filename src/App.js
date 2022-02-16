@@ -1,4 +1,4 @@
-import react, {useState, useRef} from 'react';
+import react, {useState, useRef, useEffect} from 'react';
 import './App.css';
 
 import firebase from 'firebase/compat/app';
@@ -61,9 +61,13 @@ function Chatroom() {
   const dummy = useRef();
 
   const messagesRef = firestore.collection('messages');
-  const query = messagesRef.orderBy('createdAt').limit(50);
+  const query = messagesRef.orderBy('createdAt', 'desc').limit(50);
 
   const [messages] = useCollectionData(query, { idField: 'id' });
+  
+  if (messages != null) {
+    messages.reverse();
+  }
 
   const [ formValue, setFormValue ] = useState('');
 
@@ -82,6 +86,10 @@ function Chatroom() {
     setFormValue('')
     dummy.current.scrollIntoView({ behavior: 'smooth' })
   }
+  
+  useEffect(() => {
+    dummy.current.scrollIntoView()
+  })
 
   return (
     <>
