@@ -61,13 +61,9 @@ function Chatroom() {
   const dummy = useRef();
 
   const messagesRef = firestore.collection('messages');
-  const query = messagesRef.orderBy('createdAt', 'desc').limit(50);
+  const query = messagesRef.orderBy('createdAt').limit(50);
 
   const [messages] = useCollectionData(query, { idField: 'id' });
-  
-  if (messages != undefined) {
-    messages.reverse();
-  }
 
   const [ formValue, setFormValue ] = useState('');
 
