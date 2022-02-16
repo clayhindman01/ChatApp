@@ -65,7 +65,7 @@ function Chatroom() {
 
   const [messages] = useCollectionData(query, { idField: 'id' });
   
-  if (messages != null) {
+  if (messages != undefined) {
     messages.reverse();
   }
 
